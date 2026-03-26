@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Say It Again"
+rootProject.name = "Sia"
 include(":app")
 include(":ui")
 include(":common")

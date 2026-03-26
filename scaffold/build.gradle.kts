@@ -3,15 +3,13 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
-
-    id("com.google.devtools.ksp")
-
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
     namespace = "eu.project.scaffold"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26
