@@ -1,15 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-
-    id("com.google.devtools.ksp")
-
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
     namespace = "eu.project.connectivity"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26

@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "eu.project.ui"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26
@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.androidx.compose.bom.v20250601))
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.material.icons.extended)
 
 //  Testing
     testImplementation(libs.junit)
