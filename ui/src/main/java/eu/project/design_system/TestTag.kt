@@ -46,5 +46,8 @@ object TestTag {
     object Component {
         fun loadingIndicator(parentTag: String) = "${parentTag}_loading_indicator"
         fun animatedContent(parentTag: String) = "${parentTag}_animated_content"
+
+        fun dialogConfirmButton(parentTag: String) = "${parentTag}_confirm_text_button"
+        fun dialogDismissButton(parentTag: String) = "${parentTag}_dismiss_text_button"
     }
 }
