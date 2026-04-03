@@ -65,21 +65,33 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-//  Hilt
+    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-//  Splash screen
+    // Splash screen
     implementation(libs.androidx.core.splashscreen)
 
-//  Firebase
+    // Firebase
     implementation(platform(libs.firebase.bom))
 
-//  Crashlytics
+    // Crashlytics
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.analytics)
+
+    // MockK
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockk.android)
+    testImplementation(libs.mockk.agent)
+
+    // Turbine
+    testImplementation(libs.turbine)
+
+    // Coroutines test
+    testImplementation(libs.kotlinx.coroutines.test)
 
     implementation(project(":common"))
     implementation(project(":scaffold"))
     implementation(project(":localData"))
+    implementation(project(":auth"))
 }

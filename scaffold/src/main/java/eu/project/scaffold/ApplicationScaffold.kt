@@ -1,5 +1,7 @@
 package eu.project.scaffold
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,9 +12,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import eu.project.common.navigation.Navigation
+import eu.project.design_system.theme.SiaTheme
 import eu.project.floatingActionButton.impl.floatingActionButtonImpl
 import eu.project.home.impl.homeImpl
 import eu.project.saved.exportResult.impl.exportResultImpl
@@ -24,7 +28,7 @@ import eu.project.ui.theme.Background
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun applicationScaffold() {
+fun ApplicationScaffold(startRoute: Navigation) {
 
     val controller = rememberNavController()
 
@@ -35,11 +39,9 @@ fun applicationScaffold() {
         contentWindowInsets = WindowInsets.statusBars,
         floatingActionButtonPosition = FabPosition.Center,
         topBar = {
-
             topBarImpl(controller)
         },
         floatingActionButton = {
-
             floatingActionButtonImpl(controller)
         },
         content = { paddingValues ->
@@ -49,8 +51,32 @@ fun applicationScaffold() {
                     top = paddingValues.calculateTopPadding()
                 ),
                 navController = controller,
-                startDestination = Navigation.HomeScreen,
+                startDestination = startRoute,
                 builder = {
+
+                    this.navigation<Navigation.Unauthenticated.RouteUnauthenticated>(
+                        startDestination = Navigation.Unauthenticated.WelcomeScreen
+                    ) {
+                        this.composable<Navigation.Unauthenticated.WelcomeScreen> {
+                            Column(modifier = Modifier.fillMaxSize().background(SiaTheme.color.text.primary)) {}
+                        }
+                    }
+
+                    this.navigation<Navigation.Authenticated.RouteAuthenticated>(
+                        startDestination = Navigation.Authenticated.HomeScreen
+                    ) {
+                        this.composable<Navigation.Authenticated.HomeScreen> {}
+                    }
+
+                    this.composable<Navigation.InitializationErrorScreen> {}
+
+
+
+
+
+
+
+
 
                     this.homeImpl(controller)
 
