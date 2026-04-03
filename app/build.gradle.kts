@@ -67,6 +67,9 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
+//  Splash screen
+    implementation(libs.androidx.core.splashscreen)
+
     implementation(project(":common"))
     implementation(project(":scaffold"))
     implementation(project(":localData"))
