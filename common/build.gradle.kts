@@ -54,5 +54,12 @@ dependencies {
     // Serialization
     implementation(libs.kotlinx.serialization.json)
 
+    //  Firebase
+    implementation(platform(libs.firebase.bom))
+
+    //  Crashlytics
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
+
     implementation(libs.navigation.compose)
 }

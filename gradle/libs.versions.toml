@@ -1,12 +1,15 @@
 [versions]
 converterGsonVersion = "3.0.0"
 coreSplashscreenVersion = "1.2.0"
+firebaseBomVersion = "34.11.0"
 hiltNavigationComposeVersion = "1.2.0"
 activityComposeVersion = "1.10.1"
 composeBom = "2026.03.00"
 coreKtx = "1.16.0"
 hiltAndroidCompilerVersion = "2.56.2"
 hiltAndroidVersion = "2.56.2"
+googleServices = "4.4.4"
+firebaseCrashlytics = "3.0.6"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -55,6 +58,9 @@ androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGsonVersion" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidVersion" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompilerVersion" }
 junit = { module = "junit:junit", version.ref = "junit" }
@@ -84,3 +90,5 @@ android-application = { id = "com.android.application", version.ref = "agpVersio
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinVersion" }
 google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroidVersion" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlytics" }

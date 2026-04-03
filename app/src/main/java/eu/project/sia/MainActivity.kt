@@ -1,4 +1,4 @@
-package eu.project.sayitagain
+package eu.project.sia
 
 import android.net.Uri
 import android.os.Bundle

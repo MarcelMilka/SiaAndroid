@@ -4,14 +4,16 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
-    namespace = "eu.project.sayitagain"
+    namespace = "eu.project.sia"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "eu.project.sayitagain"
+        applicationId = "eu.project.sia"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -69,6 +71,13 @@ dependencies {
 
 //  Splash screen
     implementation(libs.androidx.core.splashscreen)
+
+//  Firebase
+    implementation(platform(libs.firebase.bom))
+
+//  Crashlytics
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
 
     implementation(project(":common"))
     implementation(project(":scaffold"))
