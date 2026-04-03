@@ -36,6 +36,11 @@ turbineVersion = "1.2.1"
 uiTestJunit4Version = "1.8.3"
 uiTestManifestVersion = "1.8.3"
 ksp = "2.2.21-2.0.4"
+ktorClientAndroid = "3.3.1"
+credentialsPlayServicesAuth = "1.6.0-beta02"
+googleid = "1.1.1"
+supabaseBom = "3.2.5"
+gotrueKt = "2.7.0-beta-1"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
@@ -80,6 +85,14 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbineVersion" 
 ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "uiTestManifestVersion" }
 ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4Version" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
+googleid = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "googleid" }
+androidx-credentials-play-services-auth = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentialsPlayServicesAuth" }
+androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentialsPlayServicesAuth" }
+bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "supabaseBom" }
+postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
+gotrue-kt = { module = "io.github.jan-tennert.supabase:gotrue-kt", version.ref = "gotrueKt" }
+
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "agpVersion" }
