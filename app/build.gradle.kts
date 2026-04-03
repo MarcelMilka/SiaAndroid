@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
@@ -69,6 +71,13 @@ dependencies {
 
 //  Splash screen
     implementation(libs.androidx.core.splashscreen)
+
+//  Firebase
+    implementation(platform(libs.firebase.bom))
+
+//  Crashlytics
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
 
     implementation(project(":common"))
     implementation(project(":scaffold"))
