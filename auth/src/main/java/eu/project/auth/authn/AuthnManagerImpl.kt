@@ -6,7 +6,9 @@ import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.Google
 import io.github.jan.supabase.auth.providers.builtin.IDToken
 import eu.project.auth.client.SupabaseClient
+import eu.project.auth.user.User
 import io.github.jan.supabase.auth.SignOutScope
+import java.util.UUID
 import javax.inject.Inject
 
 /**
@@ -29,7 +31,24 @@ internal class AuthnManagerImpl @Inject constructor(supabaseClient: SupabaseClie
         }
     }
 
+    override fun getUser(): User? {
+        val id = client.auth.currentUserOrNull()?.id ?: return null
+        val email = client.auth.currentUserOrNull()?.email ?: return null
+
+        return try {
+            User(
+                id = UUID.fromString(id),
+                email = email
+            )
+        }
+        catch (e: IllegalArgumentException) {
+            null
+        }
+    }
+
     override suspend fun restoreSession() {
+
+        client.auth.currentUserOrNull()?.id
 
         // block the current coroutine until the plugin is initialized.
         // ensure the SessionStatus is set to Authenticated, NotAuthenticated or RefreshError

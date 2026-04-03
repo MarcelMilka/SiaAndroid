@@ -2,6 +2,7 @@ package eu.project.auth.authn
 
 import eu.project.auth.nonce.RawNonce
 import eu.project.auth.token.GoogleIdToken
+import eu.project.auth.user.User
 
 /**
  * Handles user authentication and session management. Provides methods to sign in with Google,
@@ -13,6 +14,8 @@ interface AuthnManager {
         googleIdToken: GoogleIdToken,
         rawNonce: RawNonce
     )
+
+    fun getUser(): User?
 
     suspend fun restoreSession()
 
