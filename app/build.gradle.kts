@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "eu.project.sayitagain"
+    namespace = "eu.project.sia"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "eu.project.sayitagain"
+        applicationId = "eu.project.sia"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
