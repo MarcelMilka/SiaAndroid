@@ -13,7 +13,7 @@ import eu.project.home.screen.homeScreen
 
 fun NavGraphBuilder.homeImpl(controller: NavHostController) {
 
-    composable<Navigation.HomeScreen> {
+    composable<Navigation.Authenticated.HomeScreen> {
 
         val viewModel = hiltViewModel<HomeViewModel>()
         val isNetworkAvailable by viewModel.isNetworkAvailable.collectAsStateWithLifecycle()

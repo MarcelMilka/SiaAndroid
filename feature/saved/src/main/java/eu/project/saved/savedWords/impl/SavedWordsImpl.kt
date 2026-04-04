@@ -28,7 +28,7 @@ fun NavGraphBuilder.savedWordsImpl(controller: NavHostController) {
 
                 controller.navigate(Navigation.Transcribe.SelectAudioScreen) {
 
-                    this.popUpTo(Navigation.HomeScreen) { inclusive = false }
+                    this.popUpTo(Navigation.Authenticated.HomeScreen) { inclusive = false }
                 }
             }
         )

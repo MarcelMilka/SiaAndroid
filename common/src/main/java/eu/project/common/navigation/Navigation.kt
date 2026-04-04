@@ -4,8 +4,26 @@ import kotlinx.serialization.Serializable
 
 sealed class Navigation {
 
+    sealed class Unauthenticated: Navigation() {
+        @Serializable
+        data object RouteUnauthenticated: Unauthenticated()
+
+        @Serializable
+        data object WelcomeScreen: Unauthenticated()
+    }
+
+    sealed class Authenticated: Navigation() {
+        @Serializable
+        data object RouteAuthenticated: Authenticated()
+
+        @Serializable
+        data object HomeScreen: Authenticated()
+    }
+
     @Serializable
-    data object HomeScreen: Navigation()
+    data object InitializationErrorScreen: Navigation()
+
+
 
     sealed class Saved: Navigation() {
 

@@ -10,8 +10,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import eu.project.authenticate.welcomeScreen.impl.welcomeImpl
 import eu.project.common.navigation.Navigation
 import eu.project.floatingActionButton.impl.floatingActionButtonImpl
 import eu.project.home.impl.homeImpl
@@ -24,7 +26,7 @@ import eu.project.ui.theme.Background
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun applicationScaffold() {
+fun ApplicationScaffold(startRoute: Navigation) {
 
     val controller = rememberNavController()
 
@@ -35,11 +37,9 @@ fun applicationScaffold() {
         contentWindowInsets = WindowInsets.statusBars,
         floatingActionButtonPosition = FabPosition.Center,
         topBar = {
-
             topBarImpl(controller)
         },
         floatingActionButton = {
-
             floatingActionButtonImpl(controller)
         },
         content = { paddingValues ->
@@ -49,10 +49,30 @@ fun applicationScaffold() {
                     top = paddingValues.calculateTopPadding()
                 ),
                 navController = controller,
-                startDestination = Navigation.HomeScreen,
+                startDestination = startRoute,
                 builder = {
 
-                    this.homeImpl(controller)
+                    this.navigation<Navigation.Unauthenticated.RouteUnauthenticated>(
+                        startDestination = Navigation.Unauthenticated.WelcomeScreen
+                    ) {
+                        this.welcomeImpl(controller)
+                    }
+
+                    this.navigation<Navigation.Authenticated.RouteAuthenticated>(
+                        startDestination = Navigation.Authenticated.HomeScreen
+                    ) {
+                        this.homeImpl(controller)
+                    }
+
+                    this.composable<Navigation.InitializationErrorScreen> {}
+
+
+
+
+
+
+
+
 
                     this.navigation<Navigation.Saved.RouteSaved>(startDestination = Navigation.Saved.SavedWordsScreen) {
 
