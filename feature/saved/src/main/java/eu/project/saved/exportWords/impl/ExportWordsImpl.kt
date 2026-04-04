@@ -34,7 +34,7 @@ fun NavGraphBuilder.exportWordsImpl(controller: NavHostController) {
 
                 controller.navigate(ExportResultScreen(exportSettingsSerialized = exportSettingsSerialized)) {
 
-                    this.popUpTo<Navigation.HomeScreen> { inclusive = false }
+                    this.popUpTo<Navigation.Authenticated.HomeScreen> { inclusive = false }
                 }
             }
         )

@@ -1,7 +1,5 @@
 package eu.project.scaffold
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,8 +13,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import eu.project.authenticate.welcomeScreen.impl.welcomeImpl
 import eu.project.common.navigation.Navigation
-import eu.project.design_system.theme.SiaTheme
 import eu.project.floatingActionButton.impl.floatingActionButtonImpl
 import eu.project.home.impl.homeImpl
 import eu.project.saved.exportResult.impl.exportResultImpl
@@ -57,15 +55,13 @@ fun ApplicationScaffold(startRoute: Navigation) {
                     this.navigation<Navigation.Unauthenticated.RouteUnauthenticated>(
                         startDestination = Navigation.Unauthenticated.WelcomeScreen
                     ) {
-                        this.composable<Navigation.Unauthenticated.WelcomeScreen> {
-                            Column(modifier = Modifier.fillMaxSize().background(SiaTheme.color.text.primary)) {}
-                        }
+                        this.welcomeImpl(controller)
                     }
 
                     this.navigation<Navigation.Authenticated.RouteAuthenticated>(
                         startDestination = Navigation.Authenticated.HomeScreen
                     ) {
-                        this.composable<Navigation.Authenticated.HomeScreen> {}
+                        this.homeImpl(controller)
                     }
 
                     this.composable<Navigation.InitializationErrorScreen> {}
@@ -77,8 +73,6 @@ fun ApplicationScaffold(startRoute: Navigation) {
 
 
 
-
-                    this.homeImpl(controller)
 
                     this.navigation<Navigation.Saved.RouteSaved>(startDestination = Navigation.Saved.SavedWordsScreen) {
 

@@ -12,7 +12,7 @@ import eu.project.authenticate.welcomeScreen.state.WelcomeScreenState
 import eu.project.authenticate.welcomeScreen.vm.WelcomeScreenViewModel
 import eu.project.common.navigation.Navigation
 
-fun NavGraphBuilder.welcomeScreenImpl(controller: NavHostController) {
+fun NavGraphBuilder.welcomeImpl(controller: NavHostController) {
     composable<Navigation.Unauthenticated.WelcomeScreen> {
 
         val viewModel = hiltViewModel<WelcomeScreenViewModel>()

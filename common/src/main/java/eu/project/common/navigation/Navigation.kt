@@ -24,8 +24,6 @@ sealed class Navigation {
     data object InitializationErrorScreen: Navigation()
 
 
-    @Serializable
-    data object HomeScreen: Navigation()
 
     sealed class Saved: Navigation() {
 

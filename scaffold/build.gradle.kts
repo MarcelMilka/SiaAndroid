@@ -93,4 +93,5 @@ dependencies {
     implementation(project(":feature:home"))
     implementation(project(":feature:saved"))
     implementation(project(":feature:transcribe"))
+    implementation(project(":feature:authenticate"))
 }
