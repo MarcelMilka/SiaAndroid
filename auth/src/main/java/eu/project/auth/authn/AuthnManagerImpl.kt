@@ -1,11 +1,13 @@
 package eu.project.auth.authn
 
-import eu.project.auth.nonce.RawNonce
-import eu.project.auth.token.GoogleIdToken
+import androidx.credentials.exceptions.GetCredentialCancellationException
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.Google
 import io.github.jan.supabase.auth.providers.builtin.IDToken
 import eu.project.auth.client.SupabaseClient
+import eu.project.auth.credentialManager.GoogleCredentialManager
+import eu.project.auth.nonce.NonceGenerator
+import eu.project.auth.result.SignInWithGoogleResult
 import eu.project.auth.user.User
 import io.github.jan.supabase.auth.SignOutScope
 import java.util.UUID
@@ -14,20 +16,31 @@ import javax.inject.Inject
 /**
  * Implementation of `AuthnManager` that uses `SupabaseClient` to perform auth-related tasks.
  */
-internal class AuthnManagerImpl @Inject constructor(supabaseClient: SupabaseClient): AuthnManager {
+internal class AuthnManagerImpl @Inject constructor(
+    supabaseClient: SupabaseClient,
+    private val googleCredentialManager: GoogleCredentialManager
+): AuthnManager {
 
     private val client = supabaseClient.client
 
-    override suspend fun signInWithGoogle(
-        googleIdToken: GoogleIdToken,
-        rawNonce: RawNonce
-    ) {
+    override suspend fun signInWithGoogle(): SignInWithGoogleResult {
+        return try {
+            val nonceSet = NonceGenerator.generateNonce()
 
-        // sign in using Google
-        client.auth.signInWith(IDToken) {
-            this.idToken = googleIdToken.value
-            this.provider = Google
-            this.nonce = rawNonce.value
+            val googleIdToken = googleCredentialManager.getGoogleIdToken(nonceSet.hashedNonce)
+
+            client.auth.signInWith(IDToken) {
+                this.idToken = googleIdToken.value
+                this.provider = Google
+                this.nonce = nonceSet.rawNonce.value
+            }
+            SignInWithGoogleResult.Success
+        }
+        catch (e: Exception) {
+            when (e) {
+                is GetCredentialCancellationException -> SignInWithGoogleResult.Failure.Cancelled
+                else -> SignInWithGoogleResult.Failure.Unknown(e)
+            }
         }
     }
 

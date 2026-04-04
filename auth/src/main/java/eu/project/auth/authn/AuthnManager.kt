@@ -1,7 +1,6 @@
 package eu.project.auth.authn
 
-import eu.project.auth.nonce.RawNonce
-import eu.project.auth.token.GoogleIdToken
+import eu.project.auth.result.SignInWithGoogleResult
 import eu.project.auth.user.User
 
 /**
@@ -10,10 +9,7 @@ import eu.project.auth.user.User
  */
 interface AuthnManager {
 
-    suspend fun signInWithGoogle(
-        googleIdToken: GoogleIdToken,
-        rawNonce: RawNonce
-    )
+    suspend fun signInWithGoogle(): SignInWithGoogleResult
 
     fun getUser(): User?
 

@@ -21,8 +21,12 @@ internal class AuthModule {
     @Singleton
     fun provideAuthManager(
         supabaseClient: SupabaseClient,
+        googleCredentialManager: GoogleCredentialManager
     ): AuthnManager =
-        AuthnManagerImpl(supabaseClient)
+        AuthnManagerImpl(
+            supabaseClient = supabaseClient,
+            googleCredentialManager = googleCredentialManager
+        )
 
     @Provides
     @Singleton
