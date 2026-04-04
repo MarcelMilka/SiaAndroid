@@ -50,4 +50,13 @@ object TestTag {
         fun dialogConfirmButton(parentTag: String) = "${parentTag}_confirm_text_button"
         fun dialogDismissButton(parentTag: String) = "${parentTag}_dismiss_text_button"
     }
+
+    object WelcomeScreen {
+        const val SCREEN = "welcome_screen"
+
+        const val IDLE_CONTENT = "welcome_screen_idle_content"
+        const val IDLE_CONTENT_BUTTON = "welcome_screen_idle_content_button"
+
+        const val LOADING_CONTENT = "welcome_screen_loading_content"
+    }
 }
