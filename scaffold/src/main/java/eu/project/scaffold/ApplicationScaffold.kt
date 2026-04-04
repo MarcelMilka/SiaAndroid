@@ -15,6 +15,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import eu.project.authenticate.welcomeScreen.impl.welcomeImpl
 import eu.project.common.navigation.Navigation
+import eu.project.design_system.theme.SiaTheme
 import eu.project.floatingActionButton.impl.floatingActionButtonImpl
 import eu.project.home.impl.homeImpl
 import eu.project.saved.exportResult.impl.exportResultImpl
@@ -22,7 +23,6 @@ import eu.project.saved.exportWords.impl.exportWordsImpl
 import eu.project.saved.savedWords.impl.savedWordsImpl
 import eu.project.topBar.impl.topBarImpl
 import eu.project.transcribe.selectAudio.impl.selectAudioImpl
-import eu.project.ui.theme.Background
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -33,7 +33,7 @@ fun ApplicationScaffold(startRoute: Navigation) {
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
-        containerColor = Background,
+        containerColor = SiaTheme.color.surface.background,
         contentWindowInsets = WindowInsets.statusBars,
         floatingActionButtonPosition = FabPosition.Center,
         topBar = {
