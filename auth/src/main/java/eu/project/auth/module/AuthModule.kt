@@ -8,6 +8,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import eu.project.auth.authn.AuthnManager
 import eu.project.auth.authn.AuthnManagerImpl
+import eu.project.auth.authz.AuthzManager
+import eu.project.auth.authz.AuthzManagerImpl
 import eu.project.auth.client.SupabaseClient
 import eu.project.auth.credentialManager.GoogleCredentialManager
 import eu.project.auth.credentialManager.GoogleCredentialManagerImpl
@@ -27,6 +29,13 @@ internal class AuthModule {
             supabaseClient = supabaseClient,
             googleCredentialManager = googleCredentialManager
         )
+
+    @Provides
+    @Singleton
+    fun provideAuthzManager(
+        supabaseClient: SupabaseClient
+    ): AuthzManager =
+        AuthzManagerImpl(supabaseClient = supabaseClient)
 
     @Provides
     @Singleton
